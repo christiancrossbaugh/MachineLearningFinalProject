@@ -77,3 +77,8 @@ Contents:
     -- ResultsComparison.py
         
         -- Description: Used to compare two data sets and give similarity scores. Used as additional validation and testing for the NLP models accuracy.
+
+
+    -- MLSandboxNLP.ipynb
+
+        -- Description: A jupyter notebook with comments and title blocks describing the various sandboxing and results of running queries for review. Contains most output as examples.
