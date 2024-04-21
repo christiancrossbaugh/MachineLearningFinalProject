@@ -1,4 +1,3 @@
-import pandas as pd
 
 # Function to swap two columns in a DataFrame
 def swap_columns(df, col1, col2):
@@ -19,10 +18,9 @@ df = swap_columns(df, column1, column2)
 df.to_csv('output.csv', index=False)
 
 
+### Uses sentence to vector library to iterate over a csv of sentences and return the most common 10 tokens. Attempted to use sent2vec for the common tokens collection but unsucessful
 
-
-#Uses sentence to vector library to iterate over a csv of sentences and return the most common 10 tokens.
-
+# Required imports
 import pandas as pd
 from collections import Counter
 from nltk.tokenize import word_tokenize
@@ -70,8 +68,9 @@ for token, count in top_tokens:
 
 
 
-# Preprocesses CSV to remove punctuation then counts the words and adds new column to csv titled word_count
+## Preprocesses CSV to remove punctuation then counts the words and adds new column to csv titled word_count, used for preprocessing raw requirements
 
+# Required imports
 import pandas as pd
 import re
 from nltk.tokenize import word_tokenize
@@ -95,6 +94,9 @@ df['word_count'] = df['requirement'].apply(count_words)
 df.to_csv('output.csv', index=False)
 
 
+## Function to count most common words, used for analysis and detecting data trends
+
+# Required imports
 import pandas as pd
 from collections import Counter
 from sentence_transformers import SentenceTransformer
@@ -138,3 +140,33 @@ top_tokens = token_counts.most_common(10)
 print("Top 10 most common tokens:")
 for token, count in top_tokens:
     print(f"{token}: {count}")
+
+
+
+### Function for synonym replacement data augmentation ###
+def synonym_replacement(text, n=2):
+    words = text.split()
+    new_words = words.copy()
+    random_word_list = list(set([word for word in words if word not in stopwords.words('english')]))
+    random.shuffle(random_word_list)
+    num_replaced = 0
+    for random_word in random_word_list:
+        synonyms = get_synonyms(random_word)
+        if len(synonyms) >= 1:
+            synonym = random.choice(list(synonyms))
+            new_words = [synonym if word == random_word else word for word in new_words]
+            num_replaced += 1
+        if num_replaced >= n:
+            break
+    return ' '.join(new_words)
+
+def get_synonyms(word):
+    synonyms = set()
+    for syn in wordnet.synsets(word):
+        for lemma in syn.lemmas():
+            synonym = lemma.name().replace("_", " ").replace("-", " ").lower()
+            synonym = "".join([char for char in synonym if char in ' qwertyuiopasdfghjklzxcvbnm'])
+            synonyms.add(synonym) 
+    if word in synonyms:
+        synonyms.remove(word)
+    return list(synonyms)
