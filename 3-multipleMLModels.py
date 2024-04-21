@@ -1,10 +1,52 @@
 import pandas as pd
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
+from nltk.corpus import wordnet
+from nltk.corpus import stopwords
+import random
+
+# Function for synonym replacement data augmentation
+def synonym_replacement(text, n=2):
+    words = text.split()
+    new_words = words.copy()
+    random_word_list = list(set([word for word in words if word not in stopwords.words('english')]))
+    random.shuffle(random_word_list)
+    num_replaced = 0
+    for random_word in random_word_list:
+        synonyms = get_synonyms(random_word)
+        if len(synonyms) >= 1:
+            synonym = random.choice(list(synonyms))
+            new_words = [synonym if word == random_word else word for word in new_words]
+            num_replaced += 1
+        if num_replaced >= n:
+            break
+    return ' '.join(new_words)
+
+def get_synonyms(word):
+    synonyms = set()
+    for syn in wordnet.synsets(word):
+        for lemma in syn.lemmas():
+            synonym = lemma.name().replace("_", " ").replace("-", " ").lower()
+            synonym = "".join([char for char in synonym if char in ' qwertyuiopasdfghjklzxcvbnm'])
+            synonyms.add(synonym) 
+    if word in synonyms:
+        synonyms.remove(word)
+    return list(synonyms)
+
+# Function to train and evaluate a classifier
+def train_and_evaluate_classifier(classifier, X_train, X_test, y_train, y_test):
+    classifier.fit(X_train, y_train)
+    y_pred = classifier.predict(X_test)
+    report = classification_report(y_test, y_pred, output_dict=True)
+    return report
 
 # Step 1: Read CSV and preprocess data
 df = pd.read_csv('/content/software_req_classified_raw.csv', delimiter=',')
@@ -12,37 +54,64 @@ df = pd.read_csv('/content/software_req_classified_raw.csv', delimiter=',')
 X = df['requirement']
 y = df['reqLabel']
 
+# Determine the minority class
+minority_class = y.value_counts().idxmin()
+
+# Data augmentation
+augmented_X = []
+augmented_y = []
+for text, label in zip(X, y):
+    augmented_X.append(text)
+    augmented_y.append(label)
+    # Apply data augmentation to only the minority class
+    if label == minority_class:
+        augmented_text = synonym_replacement(text)  # Use other data augmentation techniques as well
+        augmented_X.append(augmented_text)
+        augmented_y.append(label)
+
+X = augmented_X
+y = augmented_y
+
 # Step 2: Feature extraction using TF-IDF
-tfidf_vectorizer = TfidfVectorizer(max_features=1000)  # You can adjust max_features as needed
+tfidf_vectorizer = TfidfVectorizer(max_features=1000)  # adjust max_features as needed
 X_tfidf = tfidf_vectorizer.fit_transform(X)
 
 # Step 3: Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X_tfidf, y, test_size=0.2, random_state=42)
 
-# Step 4: Train different classifiers
-# Random Forest Classifier
-rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_classifier.fit(X_train, y_train)
-
-# Multinomial Naive Bayes Classifier
-nb_classifier = MultinomialNB()
-nb_classifier.fit(X_train, y_train)
-
-# Logistic Regression Classifier
-lr_classifier = LogisticRegression(max_iter=1000)
-lr_classifier.fit(X_train, y_train)
-
-# Step 5: Model evaluation
-classifiers = {
-    'Random Forest': rf_classifier,
-    'Multinomial Naive Bayes': nb_classifier,
-    'Logistic Regression': lr_classifier
-}
-
-for name, classifier in classifiers.items():
-    print(f"\n{name}:")
-    y_pred = classifier.predict(X_test)
-    print(classification_report(y_test, y_pred))
+# Step 4: Train and evaluate each classifier
+classifiers = [
+    {
+        'name': 'Random Forest',
+        'classifier': RandomForestClassifier(),
+        'params': {
+            'classifier__n_estimators': [100, 200, 300],
+            'classifier__max_depth': [None, 10, 20]
+        }
+    },
+    {
+        'name': 'Multinomial Naive Bayes',
+        'classifier': MultinomialNB(),
+        'params': {
+            'classifier__alpha': [0.1, 0.5, 1.0]
+        }
+    },
+    {
+        'name': 'Logistic Regression',
+        'classifier': LogisticRegression(),
+        'params': {
+            'classifier__C': [0.1, 1.0, 10.0],
+            'classifier__max_iter': [1000]
+        }
+    },
+    {
+        'name': 'Support Vector Machine',
+        'classifier': SVC(kernel='linear', probability=True),
+        'params': {
+            'classifier__C': [0.1, 1.0, 10.0]
+        }
+    }
+]
 
 # Step 6: Prediction example
 new_requirements = ["The system must be able to handle 1000 concurrent users.",
@@ -74,9 +143,37 @@ new_requirements = ["The system must be able to handle 1000 concurrent users.",
                     "As a student, I want to access academic advising services and schedule appointments conveniently.",
                     "As a university administrator, I need to monitor student retention rates and graduation outcomes effectively.",
                     "As a student, I seek easy access to online tutoring and academic support services."]
-for name, classifier in classifiers.items():
+
+# Fit and predict for each classifier
+for classifier_info in classifiers:
+    name = classifier_info['name']
+    classifier = classifier_info['classifier']
+    
+    # Fit the classifier
+    classifier.fit(X_train, y_train)
+    
     print(f"\nPredictions for new requirements using {name}:")
     new_requirements_tfidf = tfidf_vectorizer.transform(new_requirements)
     predictions = classifier.predict(new_requirements_tfidf)
     for req, pred in zip(new_requirements, predictions):
         print(f"{req} - Predicted: {pred}")
+
+# Dictionary to store classification reports for each classifier
+classification_reports = {}
+
+# Train and evaluate each classifier
+for classifier_info in classifiers:
+    name = classifier_info['name']
+    classifier = classifier_info['classifier']
+    params = classifier_info['params']
+    
+    # Fit classifier and evaluate
+    report = train_and_evaluate_classifier(classifier, X_train, X_test, y_train, y_test)
+    
+    # Store the classification report
+    classification_reports[name] = report
+
+# Output the results
+for name, report in classification_reports.items():
+    print(f"\n{name}:")
+    print(pd.DataFrame(report).transpose())
