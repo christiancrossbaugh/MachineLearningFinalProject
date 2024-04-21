@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2024-04-21T15:17:09.201Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="rnOX_TMKoKqybOWjPVCN" version="24.2.7" type="device">
+  <diagram name="Page-1" id="t8T-hdH0KEpZa8AHahW-">
+    <mxGraphModel dx="1728" dy="982" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L1TPrNoimjDb750Ack25-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1TPrNoimjDb750Ack25-1" target="L1TPrNoimjDb750Ack25-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-1" value="CSV of Requirements" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="L1TPrNoimjDb750Ack25-2" target="L1TPrNoimjDb750Ack25-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-2" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;&lt;u style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Preprocessing:&lt;/font&gt;&lt;/u&gt;&lt;/b&gt;&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Verifying CSV formatting&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Removing punctuation&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Removing stop words as needed&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Adding feature columns manual&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Using NLP library to augment data&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Vectorizing sentences for ML model&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;usage&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Splitting data for train test&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="210" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-4" value="&lt;b style=&quot;font-size: 15px;&quot;&gt;&lt;u style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;ML/NLP Step:&lt;/font&gt;&lt;/u&gt;&lt;/b&gt;&lt;div style=&quot;font-size: 15px;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp;- Use NLP to match words and phrases and add features for count&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;- Use vectorized sentences and&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;NLP libraries to add&amp;nbsp;features&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- Run basic NLP functions to&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp; auto-label requirements using NLP common phrases and patterns&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- Train SVM using vectorized requirements to predict and auto&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;label set of requirements using train/test&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- Using trained models, classify an external set of requirments&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="10" width="250" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-6" value="Output CSV:&lt;div&gt;- New column with classifications added&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="750" y="65" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="L1TPrNoimjDb750Ack25-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="L1TPrNoimjDb750Ack25-4" target="L1TPrNoimjDb750Ack25-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
