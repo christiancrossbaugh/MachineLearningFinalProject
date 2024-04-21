@@ -1,0 +1,76 @@
+As an administrator, I want to be able to add new students to the system.
+As a faculty member, I want to access student records to view their academic progress.
+As a student advisor, I want to be able to schedule appointments with students.
+As a student, I want to be able to view my class schedule and room assignments.
+As a registrar, I want to be able to enroll students in courses and update their registration status.
+As a financial aid officer, I want to manage student financial aid applications and disbursements.
+As a department chair, I want to review and approve course proposals submitted by faculty.
+As a lecturer, I want to upload course materials and assignments for my students.
+As a librarian, I want to manage the university's library resources and track student borrowing.
+As a student, I want to be able to access online resources such as e-books and academic journals.
+As an admissions officer, I want to process student applications and track their admission status.
+As a student, I want to be able to register for classes online and view my course history.
+As a faculty member, I want to submit grades for my students at the end of each semester.
+As an IT administrator, I want to maintain the security and integrity of the student management system.
+As a student, I want to receive notifications about important deadlines and events.
+As a student, I want to be able to request official transcripts and other documents online.
+As an academic advisor, I want access to students' academic records to provide guidance on course selection.
+As a student, I want to be able to update my personal information such as contact details and major.
+As a faculty member, I want to be able to generate class rosters and attendance reports.
+As a department administrator, I want to manage faculty assignments and teaching schedules.
+As a student, I want to be able to apply for internships and research opportunities through the system.
+As a university staff member, I want to generate reports on student demographics and enrollment trends.
+As a student, I want to be able to pay tuition fees and view my financial statement online.
+As a faculty member, I want to be able to communicate with my students via messaging or announcements.
+As a student, I want to be able to access academic advising services and schedule appointments online.
+As a university administrator, I want to track student retention rates and graduation outcomes.
+As a student, I want to be able to access online tutoring and academic support services.
+As a faculty member, I want to be able to request classroom equipment and technical support.
+As a university staff member, I want to manage student housing assignments and room reservations.
+As a student, I want to be able to view my grades and GPA for each semester.
+As a faculty member, I want to be able to submit research grant proposals through the system.
+As a student, I want to be able to view internship and job opportunities posted by employers.
+As a university administrator, I want to track student disciplinary actions and conduct investigations.
+As a student, I want to be able to access disability support services and request accommodations.
+As a faculty member, I want to be able to submit academic leave requests for review.
+As a university staff member, I want to manage student organizations and event registrations.
+As a student, I want to be able to access campus maps and navigation services.
+As a faculty member, I want to be able to request library acquisitions and resources for my courses.
+As a university administrator, I want to track student academic honors and awards.
+As a student, I want to be able to access career counseling and job placement services.
+As a faculty member, I want to be able to submit proposals for curriculum changes and updates.
+As a university staff member, I want to manage student health records and medical appointments.
+As a student, I want to be able to access mental health resources and counseling services.
+As a faculty member, I want to be able to request classroom upgrades and renovations.
+As a university administrator, I want to track student participation in extracurricular activities and clubs.
+As a student, I want to be able to access transportation services and campus parking information.
+As a faculty member, I want to be able to request academic research funding through the system.
+As a university staff member, I want to manage student meal plans and dining services.
+As a student, I want to be able to access international student services and visa support.
+As a faculty member, I want to be able to submit requests for academic sabbaticals.
+As a university administrator, I want to track student academic probation and intervention outcomes.
+As a student, I want to be able to access peer tutoring and study group resources.
+As a faculty member, I want to be able to request professional development opportunities and workshops.
+As a university staff member, I want to manage student transportation services and shuttle schedules.
+As a student, I want to be able to access on-campus job postings and employment opportunities.
+As a faculty member, I want to be able to request classroom technology training and support.
+As a university administrator, I want to track student academic advising appointments and outcomes.
+As a student, I want to be able to access on-campus housing applications and room selection.
+As a faculty member, I want to be able to submit requests for research equipment and lab resources.
+As a university staff member, I want to manage student financial holds and account balances.
+As a student, I want to be able to access study abroad programs and application information.
+As a faculty member, I want to be able to request classroom software installations and updates.
+As a university administrator, I want to track student academic milestones and progress toward graduation.
+As a student, I want to be able to access career fairs and networking events.
+As a faculty member, I want to be able to submit requests for course materials and textbooks.
+As a university staff member, I want to manage student ID card issuance and replacements.
+As a student, I want to be able to access financial literacy resources and workshops.
+As a faculty member, I want to be able to submit requests for academic research assistants.
+As a university administrator, I want to track student academic petitions and appeals.
+As a student, I want to be able to access campus safety resources and emergency contacts.
+As a faculty member, I want to be able to submit requests for classroom renovations and upgrades.
+As a university staff member, I want to manage student athlete eligibility and compliance.
+As a student, I want to be able to access student government information and elections.
+As a faculty member, I want to be able to submit requests for classroom maintenance and repairs.
+As a university administrator, I want to track student academic advising outcomes and recommendations.
+As a student, I want to be able to access financial wellness resources and workshops.
