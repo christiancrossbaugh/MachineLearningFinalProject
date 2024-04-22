@@ -113,7 +113,7 @@ classifiers = [
     }
 ]
 
-# Step 6: Prediction example
+# Step 5: Prediction example
 new_requirements = ["The system must be able to handle 1000 concurrent users.",
                     "The user interface should be intuitive and easy to use.",
                     "As an administrative user, I need the capability to include new students into the system.",
