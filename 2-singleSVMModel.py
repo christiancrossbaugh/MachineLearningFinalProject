@@ -63,11 +63,12 @@ y = augmented_y
 # Step 2: Feature extraction using TF-IDF
 tfidf_vectorizer = TfidfVectorizer(max_features=1000)  # You can adjust max_features as needed
 X_tfidf = tfidf_vectorizer.fit_transform(X)
-
+print(X)
+print(y)
 # Step 3: Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X_tfidf, y, test_size=0.2, random_state=42)
 
-# Step 4: Train SVM classifier
+# Step 4: Train SVM classifier  
 svm_classifier = SVC(kernel='linear')
 svm_classifier.fit(X_train, y_train)
 
